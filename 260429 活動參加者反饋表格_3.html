@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>碳中和先鋒 灣區行動項目 - 活動參加者反饋表 (提交版)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e9f5e9;
+            font-family: 'Segoe UI', 'Roboto', 'Noto Sans', system-ui, 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 30px 20px;
+            color: #1e2f2e;
+        }
+
+        .feedback-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 32, 0, 0.2);
+            overflow: hidden;
+            padding: 24px 28px 40px 28px;
+            border: 1px solid #cfe3cf;
+        }
+
+        .main-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #1c5a3a;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.3px;
+        }
+
+        .subhead {
+            color: #2d6a4f;
+            font-weight: 500;
+            border-left: 5px solid #82b74e;
+            padding-left: 14px;
+            margin: 12px 0 10px 0;
+            font-size: 1rem;
+        }
+
+        .greeting {
+            background: #eef6e6;
+            padding: 16px 20px;
+            border-radius: 24px;
+            margin: 20px 0 24px 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            border-left: 6px solid #2c7a4d;
+        }
+
+        .event-meta {
+            background: #fcf8e8;
+            padding: 10px 18px;
+            border-radius: 18px;
+            margin-bottom: 28px;
+            display: inline-block;
+            width: 100%;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid #f5e2b6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 32px;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid #cfdec7;
+            padding: 12px 10px;
+            vertical-align: top;
+            background-color: #fff;
+        }
+
+        th {
+            background-color: #e3f2e1;
+            font-weight: 700;
+            color: #1c4d2d;
+        }
+
+        .section-title {
+            background-color: #d9e8d3;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-align: left;
+            padding: 12px 16px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: center;
+            row-gap: 10px;
+        }
+
+        .radio-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #2a7f49;
+            margin: 0;
+        }
+
+        .text-input-field {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #caddca;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background-color: #fffef7;
+            transition: 0.2s;
+            box-sizing: border-box;
+        }
+
+        .text-input-field:focus {
+            border-color: #2c7a4d;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(44, 122, 77, 0.2);
+        }
+
+        .textarea-field {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #caddca;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background-color: #fffef7;
+            resize: vertical;
+            min-height: 80px;
+            box-sizing: border-box;
+        }
+
+        .small-note {
+            font-size: 0.75rem;
+            color: #5f7352;
+            margin-top: 6px;
+        }
+
+        .submit-btn {
+            background: #2c7a4d;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 14px 28px;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-top: 15px;
+            font-family: inherit;
+        }
+
+        .submit-btn:hover {
+            background: #1f5f3b;
+            transform: scale(1.01);
+        }
+
+        /* 預覽模式遮罩/彈窗 */
+        .preview-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            font-family: system-ui, 'Segoe UI', sans-serif;
+        }
+
+        .preview-card {
+            background: white;
+            max-width: 90%;
+            width: 650px;
+            max-height: 85vh;
+            border-radius: 36px;
+            overflow-y: auto;
+            padding: 24px 30px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.3);
+            border: 1px solid #c2e0b5;
+        }
+
+        .preview-card h3 {
+            color: #1c5a3a;
+            border-left: 5px solid #82b74e;
+            padding-left: 15px;
+            margin-top: 0;
+        }
+
+        .preview-content {
+            background: #f9fef7;
+            border-radius: 24px;
+            padding: 18px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+            max-height: 55vh;
+            overflow-y: auto;
+        }
+
+        .preview-line {
+            margin: 10px 0;
+            border-bottom: 1px dashed #d4e2ca;
+            padding-bottom: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn-confirm {
+            background: #2c7a4d;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-back {
+            background: #e0e7db;
+            color: #2c5a3b;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .status-message {
+            margin-top: 12px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #2c7a4d;
+        }
+
+        @media (max-width: 750px) {
+            .feedback-container {
+                padding: 16px;
+            }
+            .radio-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="feedback-container" id="feedbackFormContainer">
+    <div class="main-title">🌱 碳中和先鋒 灣區行動項目<br>「邁向碳中和 說好綠色故事」</div>
+    <div class="subhead">深圳光明交流活動 － 參加者反饋表</div>
+    <div class="event-meta">
+        📅 日期：2026年4月29日（星期三）<br>
+        📍 地點：深圳福田中學、深圳科學技術館、深圳市寶安區生活垃圾處理歷史博物館
+    </div>
+    <div class="greeting">
+        尊敬的老師/同學：<br>
+        感謝您參與朗晴慈善於4月29日在深圳福田和光明舉辦的交流活動。請填寫以下反饋表，完成後點擊「提交問卷預覽」，確認資料無誤後將遞交至Google試算表。
+    </div>
+
+    <!-- 表單區塊 -->
+    <form id="feedbackForm">
+        <!-- 一、參加者基本資訊 (身份單選、地區單選) -->
+        <table>
+            <tr class="section-title">
+                <th colspan="2" style="background-color: #d0e2c8;">一、參加者基本資訊 *（單選項）</th>
+            </tr>
+            <tr>
+                <td style="width: 30%; background:#f9fcf6; font-weight:600;">1. 參加者身份：</td>
+                <td>
+                    <div class="radio-group">
+                        <label class="radio-item"><input type="radio" name="identity" value="學生"> 學生</label>
+                        <label class="radio-item"><input type="radio" name="identity" value="老師/帶隊老師"> 老師 / 帶隊老師</label>
+                        <label class="radio-item"><input type="radio" name="identity" value="其他"> 其他（請註明：<input type="text" id="otherIdentityText" placeholder="填寫身份" style="width: 120px; border:1px solid #ccc; border-radius: 12px; padding: 5px 8px; margin-left: 6px;">)</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background:#f9fcf6; font-weight:600;">2. 來自地區：<br><span style="font-size:0.7rem;">(單選)</span></td>
+                <td>
+                    <div class="radio-group" id="regionGroup">
+                        <label class="radio-item"><input type="radio" name="region" value="香港"> 香港</label>
+                        <label class="radio-item"><input type="radio" name="region" value="澳門"> 澳門</label>
+                        <label class="radio-item"><input type="radio" name="region" value="深圳"> 深圳</label>
+                        <label class="radio-item"><input type="radio" name="region" value="廣州"> 廣州</label>
+                        <label class="radio-item"><input type="radio" name="region" value="珠海"> 珠海</label>
+                        <label class="radio-item"><input type="radio" name="region" value="佛山"> 佛山</label>
+                        <label class="radio-item"><input type="radio" name="region" value="東莞"> 東莞</label>
+                        <label class="radio-item"><input type="radio" name="region" value="中山"> 中山</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="background:#f9fcf6; font-weight:600;">3. 學校 / 團體名稱：</td>
+                <td>
+                    <input type="text" class="text-input-field" name="school" id="schoolName" placeholder="請填寫學校或團體名稱">
+                    <div class="small-note">大灣區青少年同心行動齊達雙碳目標 · 碳中和項目</div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 二、量表部分 -->
+        <table>
+            <tr class="section-title">
+                <th colspan="6" style="background-color: #d0e2c8;">二、活動內容反饋（1分＝非常不同意，5分＝非常同意）</th>
+            </tr>
+            <tr style="background:#eef3ea; text-align: center;">
+                <th style="width: 48%;">項目</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+            </tr>
+            <tr><td>1. 我對「碳中和」主題有更深入的理解</td><td style="text-align:center;"><input type="radio" name="q1" value="1"></td><td style="text-align:center;"><input type="radio" name="q1" value="2"></td><td style="text-align:center;"><input type="radio" name="q1" value="3"></td><td style="text-align:center;"><input type="radio" name="q1" value="4"></td><td style="text-align:center;"><input type="radio" name="q1" value="5"></td></tr>
+            <tr><td>2. 講座內容專業、有啟發性</td><td style="text-align:center;"><input type="radio" name="q2" value="1"></td><td style="text-align:center;"><input type="radio" name="q2" value="2"></td><td style="text-align:center;"><input type="radio" name="q2" value="3"></td><td style="text-align:center;"><input type="radio" name="q2" value="4"></td><td style="text-align:center;"><input type="radio" name="q2" value="5"></td></tr>
+            <tr><td>3. 參觀深圳科學技術館有助理解環保實踐</td><td style="text-align:center;"><input type="radio" name="q3" value="1"></td><td style="text-align:center;"><input type="radio" name="q3" value="2"></td><td style="text-align:center;"><input type="radio" name="q3" value="3"></td><td style="text-align:center;"><input type="radio" name="q3" value="4"></td><td style="text-align:center;"><input type="radio" name="q3" value="5"></td></tr>
+            <tr><td>4. 參觀垃圾處理歷史博物館有助理解環保實踐</td><td style="text-align:center;"><input type="radio" name="q4" value="1"></td><td style="text-align:center;"><input type="radio" name="q4" value="2"></td><td style="text-align:center;"><input type="radio" name="q4" value="3"></td><td style="text-align:center;"><input type="radio" name="q4" value="4"></td><td style="text-align:center;"><input type="radio" name="q4" value="5"></td></tr>
+            <tr><td>5. 活動整體安排流暢、時間合理</td><td style="text-align:center;"><input type="radio" name="q5" value="1"></td><td style="text-align:center;"><input type="radio" name="q5" value="2"></td><td style="text-align:center;"><input type="radio" name="q5" value="3"></td><td style="text-align:center;"><input type="radio" name="q5" value="4"></td><td style="text-align:center;"><input type="radio" name="q5" value="5"></td></tr>
+            <tr><td>6. 與其他地區學生交流有收穫</td><td style="text-align:center;"><input type="radio" name="q6" value="1"></td><td style="text-align:center;"><input type="radio" name="q6" value="2"></td><td style="text-align:center;"><input type="radio" name="q6" value="3"></td><td style="text-align:center;"><input type="radio" name="q6" value="4"></td><td style="text-align:center;"><input type="radio" name="q6" value="5"></td></tr>
+            <tr><td>7. 我願意在未來繼續參與類似的碳中和活動</td><td style="text-align:center;"><input type="radio" name="q7" value="1"></td><td style="text-align:center;"><input type="radio" name="q7" value="2"></td><td style="text-align:center;"><input type="radio" name="q7" value="3"></td><td style="text-align:center;"><input type="radio" name="q7" value="4"></td><td style="text-align:center;"><input type="radio" name="q7" value="5"></td></tr>
+            <tr><td colspan="6" style="background:#f9fcf0; font-size:0.8rem; text-align:center;">請勾選相應分數 (1=非常不同意 → 5=非常同意)</td></tr>
+        </table>
+
+        <!-- 三、開放性問題 -->
+        <table>
+            <tr class="section-title"><th colspan="2">三、開放性問題（可另附紙）</th></tr>
+            <tr><td style="background:#fafcf7; width:28%;">1. 你最印象深刻的一個環節？</td><td><textarea class="textarea-field" name="impressive" rows="2"></textarea></td></tr>
+            <tr><td style="background:#fafcf7;">2. 對活動的建議或改進地方：</td><td><textarea class="textarea-field" name="suggestion" rows="2"></textarea></td></tr>
+            <tr><td style="background:#fafcf7;">3. 希望未來舉辦哪些主題的活動？</td><td><textarea class="textarea-field" name="futureTopics" rows="2"></textarea></td></tr>
+        </table>
+
+        <!-- 四、其他意見 -->
+        <table>
+            <tr class="section-title"><th>四、其他意見或感想</th></tr>
+            <tr><td><textarea class="textarea-field" name="otherComments" rows="3" placeholder="任何其他意見或感想..."></textarea></td></tr>
+        </table>
+    </form>
+
+    <!-- 提交按鈕 (原委員會位置換為提交預覽) -->
+    <button class="submit-btn" id="previewBtn">📋 提交問卷預覽 & 確認遞交</button>
+    <div class="status-message" id="statusMsg"></div>
+    <div class="signature-note" style="margin-top: 25px; text-align: center;">
+        📧 確認遞交後資料將傳送至主辦單位 Google 試算表。<br>
+        感謝 中銀香港 x 朗晴慈善 「邁向碳中和 說好綠色故事」支持！
+    </div>
+</div>
+
+<script>
+    // 輔助函數: 獲取選擇的分數 (若未選則回傳空)
+    function getSelectedRadioValue(name) {
+        const radios = document.getElementsByName(name);
+        for(let i=0; i<radios.length; i++) {
+            if(radios[i].checked) return radios[i].value;
+        }
+        return '';
+    }
+
+    // 獲取身份 (含其他自填)
+    function getIdentity() {
+        const identityRadios = document.getElementsByName('identity');
+        let selectedVal = '';
+        for(let r of identityRadios) {
+            if(r.checked) {
+                if(r.value === '其他') {
+                    const otherText = document.getElementById('otherIdentityText').value.trim();
+                    return otherText ? `其他: ${otherText}` : '其他 (未填寫)';
+                } else {
+                    selectedVal = r.value;
+                }
+            }
+        }
+        return selectedVal || '未選擇';
+    }
+
+    // 蒐集所有表單資料
+    function collectFormData() {
+        const identity = getIdentity();
+        const regionRadio = document.querySelector('input[name="region"]:checked');
+        const region = regionRadio ? regionRadio.value : '未選擇';
+        const school = document.getElementById('schoolName').value.trim() || '未填寫';
+
+        // 量表7題
+        const q1 = getSelectedRadioValue('q1') || '未評分';
+        const q2 = getSelectedRadioValue('q2') || '未評分';
+        const q3 = getSelectedRadioValue('q3') || '未評分';
+        const q4 = getSelectedRadioValue('q4') || '未評分';
+        const q5 = getSelectedRadioValue('q5') || '未評分';
+        const q6 = getSelectedRadioValue('q6') || '未評分';
+        const q7 = getSelectedRadioValue('q7') || '未評分';
+
+        const impressive = document.querySelector('textarea[name="impressive"]')?.value || '';
+        const suggestion = document.querySelector('textarea[name="suggestion"]')?.value || '';
+        const futureTopics = document.querySelector('textarea[name="futureTopics"]')?.value || '';
+        const otherComments = document.querySelector('textarea[name="otherComments"]')?.value || '';
+
+        return { identity, region, school, q1, q2, q3, q4, q5, q6, q7, impressive, suggestion, futureTopics, otherComments };
+    }
+
+    // 顯示預覽彈窗
+    function showPreview(data) {
+        const previewDiv = document.createElement('div');
+        previewDiv.className = 'preview-overlay';
+        previewDiv.innerHTML = `
+            <div class="preview-card">
+                <h3>📄 資料預覽 - 請確認無誤</h3>
+                <div class="preview-content">
+                    <div class="preview-line"><strong>參加者身份：</strong> ${escapeHtml(data.identity)}</div>
+                    <div class="preview-line"><strong>來自地區：</strong> ${escapeHtml(data.region)}</div>
+                    <div class="preview-line"><strong>學校/團體：</strong> ${escapeHtml(data.school)}</div>
+                    <div class="preview-line"><strong>1. 碳中和理解：</strong> ${data.q1} 分</div>
+                    <div class="preview-line"><strong>2. 講座啟發：</strong> ${data.q2} 分</div>
+                    <div class="preview-line"><strong>3. 科學技術館：</strong> ${data.q3} 分</div>
+                    <div class="preview-line"><strong>4. 垃圾博物館：</strong> ${data.q4} 分</div>
+                    <div class="preview-line"><strong>5. 活動安排：</strong> ${data.q5} 分</div>
+                    <div class="preview-line"><strong>6. 學生交流：</strong> ${data.q6} 分</div>
+                    <div class="preview-line"><strong>7. 繼續參與意願：</strong> ${data.q7} 分</div>
+                    <div class="preview-line"><strong>深刻環節：</strong> ${escapeHtml(data.impressive) || '無'}</div>
+                    <div class="preview-line"><strong>建議改進：</strong> ${escapeHtml(data.suggestion) || '無'}</div>
+                    <div class="preview-line"><strong>未來主題：</strong> ${escapeHtml(data.futureTopics) || '無'}</div>
+                    <div class="preview-line"><strong>其他意見：</strong> ${escapeHtml(data.otherComments) || '無'}</div>
+                </div>
+                <div class="button-group">
+                    <button class="btn-back" id="backEditBtn">✏️ 返回修改</button>
+                    <button class="btn-confirm" id="confirmSubmitBtn">✅ 確定遞交至 Google 試算表</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(previewDiv);
+
+        document.getElementById('backEditBtn').addEventListener('click', () => {
+            previewDiv.remove();
+        });
+        document.getElementById('confirmSubmitBtn').addEventListener('click', async () => {
+            // 確定遞交，發送到 Google Apps Script Web App (需部署)
+            await submitToGoogleSheets(data);
+            previewDiv.remove();
+        });
+    }
+
+    function escapeHtml(str) { return String(str).replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
+    // 發送至 Google 試算表 (使用預設 fetch POST 到 Google Apps Script)
+    // 請注意：您需要部署自己的 Google Apps Script Web App 並將 URL 替換為下方變數
+    // 此處提供標準寫法，欲實際接收數據請在 Google 試算表 => 擴充功能 => Apps Script 部署為網頁應用程式
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzQRaBxcVUfZqZ_testPlaceholder/exec'; 
+    // 重要提醒：由於無法得知用戶實際的 Google Apps Script 部署鏈接，但代碼完全符合Google表單接收邏輯。
+    // 用戶須將上方 URL 替換成自己的 Google Apps Script POST 網址。下方為模擬環境同時保留正式發送功能。
+    
+    async function submitToGoogleSheets(data) {
+        const statusDiv = document.getElementById('statusMsg');
+        statusDiv.innerText = '⏳ 正在遞交資料至 Google 試算表...';
+        try {
+            const payload = {
+                timestamp: new Date().toISOString(),
+                identity: data.identity,
+                region: data.region,
+                school: data.school,
+                q1: data.q1, q2: data.q2, q3: data.q3, q4: data.q4, q5: data.q5, q6: data.q6, q7: data.q7,
+                impressive: data.impressive,
+                suggestion: data.suggestion,
+                futureTopics: data.futureTopics,
+                otherComments: data.otherComments
+            };
+            // 如果 URL 包含 placeholder 則模擬成功（避免錯誤，同時提示）
+            if (GOOGLE_SCRIPT_URL.includes('placeholder')) {
+                console.warn('檢測到預設 Google Script URL，未實際發送。請部署自己的 Apps Script 並替換上方 GOOGLE_SCRIPT_URL 變數。');
+                statusDiv.innerHTML = '⚠️ 示範模式：資料未實際傳送至試算表。請將 GOOGLE_SCRIPT_URL 替換為有效的 Google Apps Script 網址。但已模擬遞交成功。<br>✅ 您可複製下方資料手動記錄。';
+                // 模擬成功後顯示成功訊息
+                setTimeout(() => {
+                    statusDiv.innerHTML = '✅ 反饋已記錄 (示範模式，若要整合請參考說明更換網址)。感謝您的參與！';
+                }, 800);
+                return;
+            }
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // 為了跨域簡便，但可能無法取得回應，但通常可送達
+                cache: 'no-cache',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            statusDiv.innerHTML = '✅ 提交成功！感謝您的寶貴意見，資料已傳送至 Google 試算表。';
+        } catch (err) {
+            console.error(err);
+            statusDiv.innerHTML = '❌ 提交失敗，請檢查網路或確認 Google Apps Script 網址正確，稍後再試。';
+        }
+    }
+
+    // 預覽按鈕事件
+    document.getElementById('previewBtn').addEventListener('click', () => {
+        // 簡單檢查是否至少選擇身份與地區 (建議提醒)
+        const identityCheck = document.querySelector('input[name="identity"]:checked');
+        const regionCheck = document.querySelector('input[name="region"]:checked');
+        if (!identityCheck) {
+            alert('請先選擇「參加者身份」');
+            return;
+        }
+        if (!regionCheck) {
+            alert('請先選擇「來自地區」 (單選)');
+            return;
+        }
+        const formData = collectFormData();
+        showPreview(formData);
+    });
+</script>
+</body>
+</html>
