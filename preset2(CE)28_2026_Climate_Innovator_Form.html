@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>氣候引領者證書申請表 | Application for Climate Innovator Certificate</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: #eef3ec;
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Noto Sans', 'Helvetica Neue', sans-serif;
+            padding: 16px;
+            margin: 0;
+            color: #1a3b2f;
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            padding: 20px 18px 36px;
+            border: 1px solid #cde0c5;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            overflow-x: hidden;
+        }
+        .top-banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .top-banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 1.5rem;
+            color: #1c6a41;
+            border-left: 5px solid #6fbf4c;
+            padding-left: 14px;
+            margin-bottom: 8px;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+        .title-main {
+            display: block;
+        }
+        .title-en {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #457b5e;
+            margin-top: 6px;
+        }
+        .field-group {
+            margin-bottom: 18px;
+        }
+        .field-label {
+            font-weight: 600;
+            color: #2a5e3f;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        .field-label small {
+            font-weight: normal;
+            font-size: 0.7rem;
+            color: #6f8f66;
+            display: block;
+            margin-top: 2px;
+        }
+        .required:after {
+            content: " *";
+            color: #d44c2f;
+            font-weight: bold;
+        }
+        .optional {
+            font-weight: normal;
+            font-size: 0.7rem;
+            color: #6f8f66;
+            margin-left: 6px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbdcc2;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            background: #fffdf8;
+        }
+        .name-row {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .name-row .name-item {
+            flex: 1;
+            min-width: 120px;
+        }
+        .projects-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+        .option-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f8fcf5;
+            border: 1px solid #cde0c0;
+            border-radius: 48px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            width: 100%;
+            word-break: break-word;
+        }
+        .option-btn input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            min-height: 24px;
+            margin: 0;
+            flex-shrink: 0;
+            accent-color: #2c7a4d;
+            cursor: pointer;
+        }
+        .option-text {
+            flex: 1;
+            font-size: 0.85rem;
+            line-height: 1.35;
+            color: #2a5e3f;
+            word-break: break-word;
+            white-space: normal;
+        }
+        .option-text-equal {
+            flex: 1;
+            font-size: 0.85rem;
+            line-height: 1.35;
+            color: #2a5e3f;
+        }
+        .option-text-equal .line1 {
+            display: block;
+        }
+        .option-text-equal .line2 {
+            display: block;
+            font-size: 0.85rem;
+            color: #2a5e3f;
+            margin-top: 2px;
+        }
+        .en-hint {
+            font-size: 0.65rem;
+            color: #8aa87d;
+            display: block;
+            word-break: break-word;
+        }
+        @media (max-width: 600px) {
+            .option-btn input[type="checkbox"] {
+                width: 26px;
+                height: 26px;
+                min-width: 26px;
+                min-height: 26px;
+            }
+            .option-btn {
+                padding: 10px 14px;
+            }
+        }
+        .conditional-area {
+            background: #f9fcf5;
+            border-left: 4px solid #6fbf4c;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 20px;
+        }
+        .btn-row {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        button {
+            background: #2c7a4d;
+            color: white;
+            font-weight: bold;
+            padding: 14px;
+            border: none;
+            border-radius: 48px;
+            width: 100%;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .preview-card {
+            background: #f9fff7;
+            border-radius: 24px;
+            margin-top: 25px;
+            padding: 16px;
+            border: 1px solid #c7e0b8;
+            overflow-x: hidden;
+        }
+        .preview-header {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1f6e44;
+            border-left: 4px solid #8bc34a;
+            padding-left: 12px;
+            margin-bottom: 16px;
+            word-break: break-word;
+        }
+        .preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 12px;
+        }
+        .preview-table tr {
+            border-bottom: 1px solid #e2f0da;
+        }
+        .preview-table td {
+            padding: 8px 8px;
+            vertical-align: top;
+            word-break: break-word;
+        }
+        .preview-label-cell {
+            width: 130px;
+            font-weight: 700;
+            color: #2a5e3f;
+        }
+        .preview-value-cell {
+            color: #1a3b2f;
+            word-break: break-word;
+        }
+        @media (max-width: 550px) {
+            .preview-table td {
+                display: block;
+                width: 100%;
+                padding: 6px 0;
+            }
+            .preview-table tr {
+                display: block;
+                margin-bottom: 8px;
+                border-bottom: none;
+            }
+            .preview-label-cell {
+                width: 100%;
+                padding-bottom: 2px;
+            }
+            .preview-value-cell {
+                padding-top: 0;
+                padding-left: 0;
+            }
+        }
+        /* 绿色框样式 - 用于组织其他环保宣传活动 */
+        .green-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            border-radius: 16px;
+            padding: 12px 14px;
+            margin: 12px 0 8px 0;
+            word-break: break-word;
+        }
+        .green-box-title {
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .green-box-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .green-box-table tr {
+            border-bottom: 1px solid #c8e6c9;
+        }
+        .green-box-table td {
+            padding: 8px 0;
+            vertical-align: top;
+            word-break: break-word;
+        }
+        .green-box-table td:first-child {
+            width: 130px;
+            font-weight: 600;
+            color: #2a5e3f;
+        }
+        @media (max-width: 550px) {
+            .green-box-table td {
+                display: block;
+                width: 100%;
+                padding: 6px 0;
+            }
+            .green-box-table tr {
+                display: block;
+                margin-bottom: 8px;
+                border-bottom: none;
+            }
+        }
+        .image-thumb {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .work-check-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+        .work-check-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8fcf5;
+            padding: 6px 14px;
+            border-radius: 40px;
+            border: 1px solid #deecce;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        .work-check-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            accent-color: #2c7a4d;
+        }
+        .storage-selector {
+            background: #fff7e0;
+            border-radius: 20px;
+            padding: 10px 14px;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            border: 1px solid #ffda99;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.75rem;
+        }
+        .storage-selector label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #c26b2e;
+            font-size: 0.75rem;
+        }
+        .storage-selector input {
+            width: 18px;
+            height: 18px;
+            accent-color: #2c7a4d;
+        }
+        .storage-hint {
+            font-size: 0.65rem;
+            color: #c26b2e;
+            background: rgba(255,245,200,0.6);
+            padding: 3px 8px;
+            border-radius: 30px;
+        }
+        .current-storage-status {
+            font-size: 0.7rem;
+            margin-bottom: 8px;
+        }
+        .status-badge {
+            background: #f0f6ea;
+            padding: 4px 12px;
+            border-radius: 30px;
+            color: #2a5e3f;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        /* 模态窗口样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+        }
+        .modal-content {
+            background: white;
+            max-width: 400px;
+            width: 85%;
+            border-radius: 28px;
+            padding: 24px 20px;
+            text-align: center;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.3s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .modal-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2c7a4d;
+            margin-bottom: 12px;
+        }
+        .modal-message {
+            font-size: 0.9rem;
+            color: #1a3b2f;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .modal-button {
+            background: #2c7a4d;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 48px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .modal-button:hover {
+            background: #1e5f3b;
+            transform: scale(1.02);
+        }
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .loading-content {
+            background: white;
+            padding: 24px 36px;
+            border-radius: 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2c7a4d;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 16px auto 0;
+            border: 4px solid #eef3ec;
+            border-top-color: #2c7a4d;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <div class="top-banner">
+        <img src="https://bee-reg-ab.imagency.cn/e/62f05aa2a4eb516a18a7922303ae2290.png" alt="活動橫幅 - 中銀香港 × 朗晴慈善 碳中和行動" style="max-width:100%; height:auto; display:block; margin:0 auto;">
+    </div>
+
+    <h1>
+        <span class="title-main">氣候引領者證書申請表</span>
+        <span class="title-main">(截止日期 6月22日)</span>
+        <span class="title-en">Application for Climate Innovator Certificate (Deadline: June 22)</span>
+    </h1>
+
+    <!-- 姓名 -->
+    <div class="field-group">
+        <div class="field-label required">姓名 <small>Full Name</small></div>
+        <div class="name-row">
+            <div class="name-item"><input type="text" id="chineseSurname" placeholder="姓氏 / Surname" style="flex:1"></div>
+            <div class="name-item"><input type="text" id="chineseGivenName" placeholder="名字 / Given Name" style="flex:1"></div>
+        </div>
+    </div>
+
+    <!-- 職業 -->
+    <div class="field-group">
+        <div class="field-label required">職業 <small>Occupation</small></div>
+        <select id="occupation">
+            <option value="">請選擇 / Please select</option>
+            <option>學生 / Student</option><option>老師 / Teacher</option><option>社區領袖 / Community Leader</option>
+        </select>
+    </div>
+
+    <!-- 服務機構 -->
+    <div class="field-group">
+        <div class="field-label required">服務機構 <small>Organization</small></div>
+        <select id="organization">
+            <option value="">請選擇 / Please select</option>
+            <option>學校 / School</option><option>社區團體 / Community Group</option>
+        </select>
+    </div>
+
+    <!-- 聯絡電郵 -->
+    <div class="field-group">
+        <div class="field-label required">聯絡電郵 <small>Email</small></div>
+        <input type="email" id="email" placeholder="example@domain.com">
+    </div>
+
+    <!-- 聯絡電話 -->
+    <div class="field-group">
+        <div class="field-label required">聯絡電話 <small>Contact No.</small></div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <select id="phoneCode" style="width:110px;"><option>(+852)</option><option>(+853)</option><option>(+86)</option></select>
+            <input type="tel" id="phoneNumber" placeholder="數字 / Numbers only" style="flex:1">
+        </div>
+    </div>
+
+    <!-- 參加項目（可多選）-->
+    <div class="field-group">
+        <div class="field-label required">參加項目 (可多選) <small>Participated Programs (Choose More Than One)</small></div>
+        <div class="projects-container" id="projectList">
+            <label class="option-btn"><input type="checkbox" value="4月29日大灣區交流及講座活動">
+            <span class="option-text">4月29日大灣區交流及講座活動<br><span class="en-hint">4.29 Greater Bay Area Exchange Program</span></span></label>
+            
+            <label class="option-btn">
+                <input type="checkbox" value="5月9日或5月16日小學碳中和定向研習日營">
+                <span class="option-text-equal">
+                    <span class="line1">5月9日或5月16日</span>
+                    <span class="line2">小學碳中和定向研習日營</span>
+                    <span class="en-hint">5.9/5.16 Find The Path To Carbon Neutral</span>
+                </span>
+            </label>
+            
+            <label class="option-btn"><input type="checkbox" value="6月6日世界環境日活動簡報會">
+                <span class="option-text">6月6日世界環境日活動簡報會<br><span class="en-hint">6.6 World Environment Day Event Briefing</span></span></label>
+
+            <label class="option-btn">
+                <input type="checkbox" value="6月14日世界環境日 碳中和教育站活動">
+                <span class="option-text-equal">
+                    <span class="line1">6月14日世界環境日</span> 
+                    <span class="line2">碳中和教育站活動</span>
+                    <span class="en-hint">6.14 World Environment Day Carbon Neutrality Stations</span>
+                </span>
+            </label>
+            
+            <label class="option-btn">
+                <input type="checkbox" value="Stanford - HKUST Global Sustainability Challenge">
+                <span class="option-text">可持續發展全球挑戰賽<br><span class="en-hint">Stanford - HKUST Global Sustainability Challenge</span></span>
+            </label>
+            
+            <label class="option-btn">
+                <input type="checkbox" id="essayCompetitionCheckbox" value="曾安排或組織學生參加「邁向碳中和 說好綠色故事」徵集比賽">
+                <span class="option-text">曾安排或組織學生參加「邁向碳中和 說好綠色故事」徵集比賽 <br><span class="en-hint">Arranged/Organized students to participate in "Tell a Green Story Competition"</span></span>
+            </label>
+            
+            <label class="option-btn" id="otherLabel">
+                <input type="checkbox" id="otherCheckbox" value="組織其他環保宣傳活動">
+                <span class="option-text">組織其他環保宣傳活動<br><span class="en-hint">Organized other environmental activities</span></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- 條件區域 -->
+    <div id="conditionalBlock" class="conditional-area" style="display: none;">
+        <div class="field-group"><div class="field-label required">請填寫項目名稱 <small>Project Name</small></div><input type="text" id="projectName" placeholder="具體活動名稱 / Specific event name"></div>
+        <div class="field-group"><div class="field-label required">學校或社區團體名稱 <small>School / Community Group Name</small></div><input type="text" id="groupName" placeholder="請輸入 / Please enter"></div>
+        <div class="field-group"><div class="field-label required">您的工作對象 (可多選) <small>Target Audience (multi-select)</small></div>
+            <div class="work-check-group">
+                <label><input type="checkbox" value="學生"> 學生 <span class="en-hint">Students</span></label>
+                <label><input type="checkbox" value="社區"> 社區 <span class="en-hint">Community</span></label>
+                <label><input type="checkbox" value="制服團體"> 制服團體 <span class="en-hint">Uniformed Groups</span></label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上傳環保活動相片 -->
+    <div class="field-group">
+        <div class="field-label">上傳環保活動相片 (選填) <small>Upload Activity Photos (optional)</small></div>
+        <div class="current-storage-status"><span class="status-badge" id="storageBadge">☁️ 目前使用：Google Drive (預設) / Default</span></div>
+        <input type="file" id="photoUpload" multiple accept="image/jpeg,image/png">
+        <div class="file-info" style="font-size:0.7rem; color:#6b8c5c; margin-top:5px;">支持 JPG/PNG，單張最大5MB，最多4張 / JPG/PNG only, max 5MB each, up to 4 files</div>
+        <div id="filePreview" style="font-size:0.7rem; color:#6b8c5c; margin-top:5px;"></div>
+        <div id="imageThumbnails" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;"></div>
+        <div class="storage-selector">
+            <label><input type="checkbox" id="useBeeImgCheckbox"><span>若為大灣區報名者，請使用此項上載相片。</span></label>
+            <span class="storage-hint">(勾選後將使用蜜蜂圖床，否則使用 Google Drive) / (BeeIMG for GBA, otherwise Google Drive)</span>
+        </div>
+    </div>
+
+    <!-- 傳播貢獻 -->
+    <div class="field-group">
+        <div class="field-label">傳播氣候變化或碳中和環保訊息方面所做的貢獻 <span class="optional">(選填 / Optional)</span><small>Share Message on carbon neutrality (Optional)</small></div>
+        <textarea id="contribution" rows="3" placeholder="請簡單描述... (非必填) / Briefly describe... (optional)"></textarea>
+    </div>
+
+    <div class="field-group">
+        <div style="font-size:0.75rem;">如有任何疑問，請發送電子郵件至 info@langqingcharity.hk<br>For inquiries, please email to info@langqingcharity.hk</div>
+    </div>
+
+    <div class="btn-row">
+        <button type="button" id="submitBtn">✅ 提交申請 / Submit Application</button>
+    </div>
+
+    <div id="previewArea" style="margin-top: 25px;"></div>
+    <div id="statusMsg" style="text-align:center; margin-top:10px; font-size:0.8rem; color:#2a7a4a;"></div>
+</div>
+
+<script>
+    // ==================== Baserow 配置區 ====================
+    const BASEROW_API_TOKEN = 'eUzJhNSRv2MbkEaClknpmMiBdlrPmp8x';   // 替换为你的 Baserow API Token
+    const BASEROW_TABLE_ID = '1013119';     // 替换为你的数据表 ID
+    const BASEROW_API_URL = `https://api.baserow.io/api/database/rows/table/${BASEROW_TABLE_ID}/?user_field_names=true`;
+    
+    const GAS_UPLOAD_URL = 'https://script.google.com/macros/s/AKfycbwD1vg3p2w2ZBdlpPHr2nVGKDF3KaCsh5vF06UEzK2MEgbGS0uhtxQ_o3wwcv3nGTSgLg/exec';
+    const BEEIMG_API = 'https://www.beeimg.cn/api/upload';
+    const BEEIMG_TOKEN = 'YOUR_BEEIMG_TOKEN_HERE';
+    
+    let selectedFiles = [];
+    const useBeeImgCheckbox = document.getElementById('useBeeImgCheckbox');
+    const storageBadge = document.getElementById('storageBadge');
+    
+    function updateStorageStatus() {
+        storageBadge.innerHTML = useBeeImgCheckbox.checked ? '📸 目前使用：蜜蜂圖床 (適用於大灣區報名者) / BeeIMG (for GBA applicants)' : '☁️ 目前使用：Google Drive (預設) / Default';
+    }
+    useBeeImgCheckbox.addEventListener('change', updateStorageStatus);
+    updateStorageStatus();
+    
+    const fileInput = document.getElementById('photoUpload');
+    const thumbnailsDiv = document.getElementById('imageThumbnails');
+    const filePreviewSpan = document.getElementById('filePreview');
+    fileInput.addEventListener('change', () => {
+        const files = Array.from(fileInput.files);
+        const allowedTypes = ['image/jpeg', 'image/png'];
+        if (files.some(f => !allowedTypes.includes(f.type))) {
+            alert('只支援 JPG 和 PNG 格式的圖片 / Only JPG and PNG are supported');
+            fileInput.value = '';
+            selectedFiles = [];
+            thumbnailsDiv.innerHTML = '';
+            filePreviewSpan.innerText = '';
+            return;
+        }
+        if (files.length > 4) { alert('最多上傳4張圖片 / Max 4 images'); fileInput.value = ''; selectedFiles = []; thumbnailsDiv.innerHTML = ''; filePreviewSpan.innerText = ''; return; }
+        let totalSize = files.reduce((s, f) => s + f.size, 0);
+        if (totalSize > 20 * 1024 * 1024) { alert('總檔案大小超過20MB / Total size exceeds 20MB'); fileInput.value = ''; selectedFiles = []; thumbnailsDiv.innerHTML = ''; filePreviewSpan.innerText = ''; return; }
+        selectedFiles = files;
+        filePreviewSpan.innerText = `已選擇 ${files.length} 張圖片 / ${files.length} image(s) selected`;
+        thumbnailsDiv.innerHTML = '';
+        files.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                const img = document.createElement('img');
+                img.src = ev.target.result;
+                img.classList.add('image-thumb');
+                thumbnailsDiv.appendChild(img);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+    
+    async function uploadToGoogleDrive(file, submissionId, chineseName) {
+        if (GAS_UPLOAD_URL.includes('YOUR_DEPLOYMENT_ID')) throw new Error('请先设定 Google Apps Script URL');
+        const base64Data = await new Promise(r => { const reader = new FileReader(); reader.onload = () => r(reader.result); reader.readAsDataURL(file); });
+        const formData = new FormData();
+        formData.append('file', base64Data);
+        formData.append('fileName', file.name);
+        formData.append('submissionId', submissionId);
+        formData.append('chineseName', chineseName);
+        const response = await fetch(GAS_UPLOAD_URL, { method: 'POST', body: formData });
+        const result = await response.json();
+        if (result.success) return result.fileUrl;
+        else throw new Error(result.message || 'Google Drive 上傳失敗');
+    }
+    
+    async function uploadToBeeIMG(file) {
+        if (BEEIMG_TOKEN === 'YOUR_BEEIMG_TOKEN_HERE') throw new Error('请设定蜜蜂图床 Token');
+        const formData = new FormData();
+        formData.append('token', BEEIMG_TOKEN);
+        formData.append('file', file);
+        const response = await fetch(BEEIMG_API, { method: 'POST', body: formData });
+        const result = await response.json();
+        if (result.code === 200 && result.data?.url) return result.data.url;
+        else throw new Error(result.msg || '蜜蜂圖床上傳失敗');
+    }
+    
+    async function batchUploadImages(files, useBeeImg, submissionId, chineseName) {
+        const urls = [];
+        for (let i = 0; i < files.length; i++) {
+            document.getElementById('statusMsg').innerText = `📸 上傳圖片 ${i+1}/${files.length}... / Uploading ${i+1}/${files.length}...`;
+            const url = useBeeImg ? await uploadToBeeIMG(files[i]) : await uploadToGoogleDrive(files[i], submissionId, chineseName);
+            urls.push(url);
+        }
+        return urls;
+    }
+    
+    const otherCheckbox = document.getElementById('otherCheckbox');
+    const conditionalBlock = document.getElementById('conditionalBlock');
+    function toggleConditional() {
+        conditionalBlock.style.display = (otherCheckbox && otherCheckbox.checked) ? 'block' : 'none';
+    }
+    if (otherCheckbox) {
+        otherCheckbox.addEventListener('change', toggleConditional);
+        otherCheckbox.closest('.option-btn')?.addEventListener('click', () => setTimeout(toggleConditional, 10));
+    }
+    toggleConditional();
+    
+    function getSelectedProjects() {
+        return Array.from(document.querySelectorAll('#projectList input[type="checkbox"]:checked')).map(cb => cb.value);
+    }
+    function getWorkTargets() {
+        return Array.from(document.querySelectorAll('#conditionalBlock .work-check-group input[type="checkbox"]:checked')).map(cb => cb.value);
+    }
+    
+    function collectData() {
+        const chineseSurname = document.getElementById('chineseSurname').value.trim();
+        const chineseGiven = document.getElementById('chineseGivenName').value.trim();
+        const chineseName = chineseSurname + chineseGiven;
+        const basic = {
+            chineseName, chineseSurname, chineseGivenName: chineseGiven,
+            occupation: document.getElementById('occupation').value,
+            organization: document.getElementById('organization').value,
+            email: document.getElementById('email').value.trim(),
+            phoneCode: document.getElementById('phoneCode').value,
+            phoneNumber: document.getElementById('phoneNumber').value.trim(),
+            projects: getSelectedProjects(),
+            contribution: document.getElementById('contribution').value.trim()
+        };
+        let conditional = { projectName: '', groupName: '', workTargets: [] };
+        if (basic.projects.includes('組織其他環保宣傳活動')) {
+            conditional.projectName = document.getElementById('projectName')?.value.trim() || '';
+            conditional.groupName = document.getElementById('groupName')?.value.trim() || '';
+            conditional.workTargets = getWorkTargets();
+        }
+        return { basic, conditional, fileNames: selectedFiles.map(f => f.name) };
+    }
+    
+    function validate(basic, conditional) {
+        if (!basic.chineseName) return "請填姓名 / Please enter name";
+        if (!basic.occupation) return "請選擇職業 / Please select occupation";
+        if (!basic.organization) return "請選擇服務機構 / Please select organization";
+        if (!basic.email) return "請填電郵 / Please enter email";
+        if (!basic.phoneNumber) return "請填電話 / Please enter phone number";
+        if (basic.projects.length === 0) return "請至少選擇一個參加項目 / Please select at least one project";
+        if (basic.projects.includes('組織其他環保宣傳活動')) {
+            if (!conditional.projectName) return "請填寫項目名稱 / Please enter project name";
+            if (!conditional.groupName) return "請填寫學校/團體名稱 / Please enter school/group name";
+            if (conditional.workTargets.length === 0) return "請至少選擇一個工作對象 / Please select at least one target audience";
+        }
+        return null;
+    }
+    
+    function generateId() { return 'CI-' + Math.floor(Math.random() * 90000 + 10000); }
+    
+    function showSuccessModal(submissionId) {
+        const modalHtml = `
+            <div class="modal-overlay" id="successModal">
+                <div class="modal-content">
+                    <div class="modal-icon">✨</div>
+                    <div class="modal-title">提交成功！</div>
+                    <div class="modal-message">
+                        資料已成功遞交並於15分鐘內寄出確認電郵！<br>
+                        報名編號 ${submissionId} 已記錄。<br>
+                        如有任何疑問，請發送電子郵件至 info@langqingcharity.hk<br>
+                        <br>                        
+                        Your data has been successfully submitted, <br>
+                        and a confirmation email will be sent within 15 minutes.<br>
+                        Registration ${submissionId} has been recorded.<br>
+                        For inquiries, please email to info@langqingcharity.hk<br>
+                    </div>
+                    <button class="modal-button" id="modalLeaveBtn">離開 / Leave</button>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        const modal = document.getElementById('successModal');
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+        const leaveBtn = document.getElementById('modalLeaveBtn');
+        if (leaveBtn) {
+            leaveBtn.addEventListener('click', () => { window.location.href = 'https://www.carbonneutralhk.com'; });
+        }
+    }
+    
+    async function submitToBaserow(data, submissionId, imageUrls) {
+        const statusDiv = document.getElementById('statusMsg');
+        statusDiv.innerText = "📡 正在傳送... / Sending...";
+        if (BASEROW_API_TOKEN === 'YOUR_BASEROW_API_TOKEN_HERE' || BASEROW_TABLE_ID === 'YOUR_BASEROW_TABLE_ID_HERE') {
+            statusDiv.innerHTML = "⚠️ 示範模式：資料僅顯示預覽。";
+            return true;
+        }
+        const payload = {
+            報名編號: submissionId, 姓名: data.basic.chineseName, 職業: data.basic.occupation,
+            服務機構: data.basic.organization, 電郵: data.basic.email, 電話: `${data.basic.phoneCode} ${data.basic.phoneNumber}`,
+            參加項目: data.basic.projects.join(", "), 項目名稱: data.conditional.projectName || '',
+            學校團體: data.conditional.groupName || '', 工作對象: data.conditional.workTargets.join(", "),
+            傳播貢獻: data.basic.contribution || '', 圖片網址: imageUrls.join("|"), 申請時間: new Date().toISOString()
+        };
+        try {
+            const response = await fetch(BASEROW_API_URL, {
+                method: 'POST',
+                headers: { 'Authorization': `Token ${BASEROW_API_TOKEN}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            if (response.ok) return true;
+            else throw new Error(`HTTP ${response.status}`);
+        } catch (err) {
+            console.error(err);
+            statusDiv.innerHTML = `❌ 傳送失敗: ${err.message}`;
+            return false;
+        }
+    }
+    
+    function renderPreview(data, submissionId, imageUrls, isAfterConfirm = false) {
+        const previewDiv = document.getElementById('previewArea');
+        const normalProjects = data.basic.projects.filter(p => p !== '組織其他環保宣傳活動');
+        const projectsDisplay = normalProjects.length ? normalProjects.join('；') : '無 / None';
+        
+        // 1. 基本資料表格 (姓名、職業、服務機構、電郵、電話)
+        let mainInfoHtml = `
+            <table class="preview-table">
+                <tr><td class="preview-label-cell">姓名 / Name：</td><td class="preview-value-cell">${escapeHtml(data.basic.chineseName)}</td></tr>
+                <tr><td class="preview-label-cell">職業 / Occupation：</td><td class="preview-value-cell">${escapeHtml(data.basic.occupation)}</td></tr>
+                <tr><td class="preview-label-cell">服務機構 / Organization：</td><td class="preview-value-cell">${escapeHtml(data.basic.organization)}</td></tr>
+                <tr><td class="preview-label-cell">電郵 / Email：</td><td class="preview-value-cell">${escapeHtml(data.basic.email)}</td></tr>
+                <tr><td class="preview-label-cell">電話 / Phone：</td><td class="preview-value-cell">${escapeHtml(data.basic.phoneCode)} ${escapeHtml(data.basic.phoneNumber)}</td></tr>
+                <tr><td class="preview-label-cell">參加項目 / Projects：</td><td class="preview-value-cell">${escapeHtml(projectsDisplay)}</td></tr>
+            </table>
+        `;
+        
+        // 2. 組織其他環保宣傳活動 - 綠色框 (位於參加項目之後)
+        let otherHtml = '';
+        if (data.basic.projects.includes('組織其他環保宣傳活動')) {
+            otherHtml = `
+                <div class="green-box">
+                    <div class="green-box-title">📌 組織其他環保宣傳活動 / Other Environmental Activity</div>
+                    <table class="green-box-table">
+                        <tr><td>項目名稱 / Project Name：</td><td>${escapeHtml(data.conditional.projectName || '—')}</td></tr>
+                        <tr><td>學校/團體 / School/Group：</td><td>${escapeHtml(data.conditional.groupName || '—')}</td></tr>
+                        <tr><td>工作對象 / Target Audience：</td><td>${escapeHtml(data.conditional.workTargets.join(', ') || '—')}</td></tr>
+                    </table>
+                </div>
+            `;
+        }
+        
+        // 3. 傳播貢獻與圖片
+        const contributionDisplay = data.basic.contribution ? escapeHtml(data.basic.contribution) : '(未填寫 / Not provided)';
+        let imageHtml = '';
+        if (imageUrls?.length) {
+            imageHtml = `<table class="preview-table"><tr><td class="preview-label-cell">上傳圖片 / Images：</td><td class="preview-value-cell">${imageUrls.map(url => `<a href="${escapeHtml(url)}" target="_blank" style="color:#2c7a4d; word-break:break-all;">查看圖片 / View</a>`).join(' | ')}</td></tr></table>`;
+        }
+        const contributionHtml = `<table class="preview-table"><tr><td class="preview-label-cell">傳播貢獻 / Contribution：</td><td class="preview-value-cell">${contributionDisplay}</td></tr></table>${imageHtml}`;
+        
+        // 正确顺序: 基本信息 → 绿色框(组织其他环保活动) → 传播贡献
+        const fullHtml = mainInfoHtml + otherHtml + contributionHtml;
+        
+        const buttonsHtml = !isAfterConfirm ? `
+            <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:20px; flex-wrap:wrap;">
+                <button id="modifyBtn" style="background:#e4ecd9; color:#2a5a3a; width:auto; padding:8px 20px; border:none; border-radius:48px; cursor:pointer;">✏️ 修改 / Edit</button>
+                <button id="confirmBtn" style="background:#1f6e44; width:auto; padding:8px 20px; border:none; border-radius:48px; cursor:pointer; color:white;">✅ 確認提交 / Confirm</button>
+            </div>
+        ` : `<div style="margin-top:20px; background:#e0f0da; padding:12px; border-radius:24px; text-align:center;">✅ 已確認提交！/ Confirmed & Submitted!</div>`;
+        
+        previewDiv.innerHTML = `<div class="preview-card"><div class="preview-header">📋 申請預覽 / Application Preview | 編號 / ID: ${submissionId}</div>${fullHtml}${buttonsHtml}</div>`;
+        
+        if (!isAfterConfirm) {
+            document.getElementById('modifyBtn')?.addEventListener('click', () => { previewDiv.innerHTML = ''; window.scrollTo(0,0); });
+            document.getElementById('confirmBtn')?.addEventListener('click', async () => {
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'loading-overlay';
+                loadingDiv.innerHTML = '<div class="loading-content"><div>📡 資料傳送中 / Submitting...</div><div class="spinner"></div></div>';
+                document.body.appendChild(loadingDiv);
+                try {
+                    const success = await submitToBaserow(data, submissionId, imageUrls);
+                    loadingDiv.remove();
+                    if (success) {
+                        renderPreview(data, submissionId, imageUrls, true);
+                        showSuccessModal(submissionId);
+                    } else {
+                        alert('提交失敗，請檢查設定');
+                    }
+                } catch (error) {
+                    loadingDiv.remove();
+                    alert('提交失敗: ' + error.message);
+                }
+            });
+        }
+    }
+    
+    function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[m]); }
+    
+    let isSubmitting = false;
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+        if (isSubmitting) return;
+        isSubmitting = true;
+        const btn = document.getElementById('submitBtn');
+        const originalText = btn.innerText;
+        btn.innerText = '⏳ 處理中 / Processing...';
+        btn.disabled = true;
+        try {
+            const { basic, conditional, fileNames } = collectData();
+            const err = validate(basic, conditional);
+            if (err) { alert('❌ ' + err); isSubmitting = false; btn.innerText = originalText; btn.disabled = false; return; }
+            let uploadedUrls = [];
+            if (selectedFiles.length) {
+                const useBeeImg = useBeeImgCheckbox.checked;
+                const newId = generateId();
+                document.getElementById('statusMsg').innerHTML = useBeeImg ? '📸 使用蜜蜂圖床上傳...' : '☁️ 使用 Google Drive 上傳...';
+                uploadedUrls = await batchUploadImages(selectedFiles, useBeeImg, newId, basic.chineseName);
+                renderPreview({ basic, conditional, fileNames }, newId, uploadedUrls, false);
+                document.getElementById('statusMsg').innerHTML = `⏳ 編號 ${newId}，請確認後提交。 / ID ${newId}, please confirm.`;
+            } else {
+                const newId = generateId();
+                renderPreview({ basic, conditional, fileNames }, newId, [], false);
+            }
+            document.getElementById('previewArea').scrollIntoView({ behavior: 'smooth' });
+        } catch (error) { alert('上傳失敗: ' + error.message); } 
+        finally { isSubmitting = false; btn.innerText = originalText; btn.disabled = false; }
+    });
+</script>
+</body>
+</html>
